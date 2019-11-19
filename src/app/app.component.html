@@ -1,0 +1,39 @@
+<header class='flex-container flex-center'>
+    <div class='width-25'></div>
+    <div class="width-half">
+        <div class="mywrite">
+                <i class="fa fa-pencil" aria-hidden="true"(click)="saveName($event)"></i>
+        </div>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        <label for="search">
+            <i class='fa fa-search icon-pos color-purple'></i>
+        </label>
+        <form [formGroup]='stateForm' autocomplete="new-password" novalidate>
+            <input id='search' placeholder="Search for a state" formControlName='search' (click)=' openDropDown() '
+                class=' input-underline search-bar ' type='text'>
+        </form>
+        <div clickOutside (clickOutside)="closeDropDown()">
+        </div>
+    </div>
+    <div class='width-25 '></div>
+</header>
+<div class="col-md-12 sub_cont d-flex">
+    <div class="col-md-4 seachfiles">
+            <div class='container card-container flex-wrap flex-center '>
+                <div class='flex-container card'
+                    *ngFor='let s of states | searchFilter: getSearchValue()'>
+                    <div class=''> {{s}} <br> <br>{{ today | date : 'h:mm' }}{{ today | date : 'a' | lowercase }}</div>
+                   <!-- <br>{{ today | date : 'h:mm' }}{{ today | date : 'a' | lowercase }} -->
+                    <!-- <div class='width-5 '></div> -->
+                </div>
+            </div>
+    </div>
+    <div class="col-md-8 mustend">
+        <input type="text" class="form-control" name="userName" [value]="userName1"
+         [(ngModel)]="userName1" placeholder="Add your text Here">{{ today | date : 'h:mm' }} {{ today | date : 'a' | lowercase }}
+         <br>
+         <br>
+         <strong>{{userName1}}</strong>
+    </div>
+    <div></div>
+</div>
